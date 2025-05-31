@@ -21,14 +21,9 @@ import { CalendarioEventosComponent } from './pages/calendario-eventos/calendari
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { OpinionesComponent } from './pages/opiniones/opiniones.component';
 import { UnityGameComponent } from './pages/unity-game/unity-game.component';
-
-
-// Admin
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
 import { ProductosComponent } from './pages/admin/productos/productos.component';
-
-// Nueva página añadida
 import { PoliticaPrivacidadComponent } from './/politica-privacidad/politica-privacidad.component';
 
 const routes: Routes = [

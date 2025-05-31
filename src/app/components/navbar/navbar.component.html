@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
   <div class="container-fluid">
+
     <!-- Botón menú lateral -->
     <button class="btn btn-outline-light me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
       ☰
@@ -11,22 +12,32 @@
       <span class="site-title ms-2">⚽ Gonsa<span class="text-highlight">Fútbol</span></span>
     </a>
 
-    <!-- Menú colapsable -->
+    <!-- Botón colapsable -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Menú principal -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/home">🏠 Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/tienda">🛒 Tienda</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/contacto">📞 Contacto</a></li>
-        <li class="nav-item"><a class="nav-link btn btn-outline-light" routerLink="/carrito">🛍️ Carrito</a></li>
+      <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
 
-        <!-- Admin (como botón independiente si está logueado y es admin) -->
+        <!-- Todos los ítems con estilo de botón -->
+        <li class="nav-item">
+          <a class="btn btn-outline-warning" routerLink="/home">🏠 Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-warning" routerLink="/tienda">🛒 Tienda</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-warning" routerLink="/contacto">📞 Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-warning" routerLink="/carrito">🛍️ Carrito</a>
+        </li>
+
+        <!-- Admin (igual estilo) -->
         <li *ngIf="usuario?.rol === 'admin'" class="nav-item dropdown">
-          <button class="btn btn-outline-info dropdown-toggle ms-2 mt-1" data-bs-toggle="dropdown">
+          <button class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown">
             🛠️ Admin
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
@@ -46,18 +57,19 @@
 
       <!-- Usuario no logueado -->
       <ng-template #sinSesion>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav d-flex align-items-center gap-2 ms-3">
           <li class="nav-item">
-            <a class="btn btn-outline-light me-2" routerLink="/login">🔑 Iniciar Sesión</a>
+            <a class="btn btn-outline-light" routerLink="/login">🔑 Iniciar Sesión</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-warning" routerLink="/registro">📝 Registrarse</a>
+            <a class="btn btn-outline-light" routerLink="/registro">📝 Registrarse</a>
           </li>
         </ul>
       </ng-template>
     </div>
   </div>
 </nav>
+
 
 <!-- Menú lateral -->
 <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="sidebarMenu">
@@ -67,14 +79,15 @@
   </div>
   <div class="offcanvas-body">
     <ul class="list-unstyled">
-      <li *ngIf="usuario"><a routerLink="/perfil" class="text-white d-block py-2">👤 Mi perfil</a></li>
+      <li *ngIf="usuario"><a routerLink="/perfil" class="text-white d-block py-2 text-decoration-none">👤 Mi perfil</a></li>
       <li><hr class="dropdown-divider bg-light"></li>
-      <li><a routerLink="/videos" class="text-white d-block py-2">🎥 Sección de Videos</a></li>
-      <li><a routerLink="/futbolistas" class="text-white d-block py-2">📘 Sección Informativa</a></li>
-      <li><a routerLink="/eventos" class="text-white d-block py-2">📅 Calendario de Eventos</a></li>
-      <li><a routerLink="/personalizacion" class="text-white d-block py-2">🎨 Personaliza tu camiseta</a></li>
-      <li><a routerLink="/opiniones" class="text-white d-block py-2">🗣️ Opiniones</a></li>
-      <li><a routerLink="/juego" class="text-white d-block py-2">🎮 Minijuego</a></li>
+      <li><a routerLink="/videos" class="text-white d-block py-2 text-decoration-none">🎥 Sección de Videos</a></li>
+      <li><a routerLink="/futbolistas" class="text-white d-block py-2 text-decoration-none">📘 Sección Informativa</a></li>
+      <li><a routerLink="/eventos" class="text-white d-block py-2 text-decoration-none">📅 Calendario de Eventos</a></li>
+      <li><a routerLink="/personalizacion" class="text-white d-block py-2 text-decoration-none">🎨 Personaliza tu camiseta</a></li>
+      <li><a routerLink="/opiniones" class="text-white d-block py-2 text-decoration-none">🗣️ Opiniones</a></li>
+      <li><a routerLink="/juego" class="text-white d-block py-2 text-decoration-none">🎮 Minijuego</a></li>
     </ul>
   </div>
 </div>
+

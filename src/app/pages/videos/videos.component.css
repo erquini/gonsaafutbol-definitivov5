@@ -1,5 +1,5 @@
 .videos-galeria {
-  padding: 60px 30px;
+  padding: 60px 20px;
   background: linear-gradient(to bottom, #e3f2fd, #fff);
   font-family: 'Poppins', sans-serif;
 }
@@ -12,32 +12,33 @@
   margin-bottom: 40px;
 }
 
-/* Cada grupo de videos */
+/* Grupo de videos */
 .grupo-carrusel {
   margin-bottom: 50px;
 }
 
+/* Carrusel */
 .carrusel {
   display: flex;
-  justify-content: center; /* <-- CENTRADO */
+  justify-content: flex-start;
   flex-wrap: nowrap;
   overflow-x: auto;
-  gap: 20px;
-  padding: 10px 0;
+  gap: 16px;
+  padding: 10px 10px;
   scroll-snap-type: x mandatory;
+  scroll-padding-left: 10px;
 }
 
 .carrusel::-webkit-scrollbar {
   display: none;
 }
 
-
-/* Tarjeta de video */
+/* Tarjeta */
 .tarjeta-video {
   position: relative;
   flex: 0 0 auto;
-  width: 320px;
-  height: 190px;
+  width: clamp(250px, 30vw, 320px);
+  height: clamp(140px, 18vw, 190px);
   border-radius: 14px;
   overflow: hidden;
   scroll-snap-align: start;
@@ -82,13 +83,31 @@
 }
 
 .info h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0;
   font-weight: 600;
 }
 
 .info p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin-top: 6px;
   color: #e3f2fd;
+}
+
+@media (max-width: 576px) {
+  .galeria-titulo {
+    font-size: 1.8rem;
+  }
+
+  .tarjeta-overlay {
+    padding: 15px;
+  }
+
+  .info h3 {
+    font-size: 1rem;
+  }
+
+  .info p {
+    font-size: 0.85rem;
+  }
 }

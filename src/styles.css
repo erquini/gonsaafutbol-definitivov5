@@ -29,20 +29,20 @@ footer {
 }
 
 .navbar-brand:hover img {
-  transform: scale(1.1); /* Pequeño efecto hover en el logo */
+  transform: scale(1.1); 
 }
 
 .site-title {
-  font-size: 1.6rem;  /* Tamaño más grande */
-  font-weight: bold;  /* Negrita */
-  color: white;       /* Color blanco */
+  font-size: 1.6rem;  
+  font-weight: bold;  
+  color: white;       
 }
 
 .text-highlight {
-  color: #ffc107; /* Amarillo */
+  color: #ffc107; 
 }
 
-/*Ajuste de los enlaces para que queden más elegantes */
+
 .navbar-nav .nav-link {
   font-size: 1rem;
   font-weight: 500;
@@ -50,10 +50,9 @@ footer {
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffc107 !important; /* Efecto hover en amarillo */
+  color: #ffc107 !important; 
 }
 
-/*Mejor apariencia en botones */
 .btn-outline-light {
   border-radius: 5px;
   padding: 5px 15px;
@@ -74,4 +73,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .text-warning i.bi-star {
   color: #dee2e6;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.container-global {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
 }

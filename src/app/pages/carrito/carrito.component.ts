@@ -130,4 +130,10 @@ obtenerAleatorias(lista: any[], cantidad: number): any[] {
   seguirComprando(): void {
     this.router.navigate(['/tienda']);
   }
+    getRutaImagen(imagen: string): string {
+  if (imagen.startsWith('uploads/')) {
+    return 'http://localhost/gonsa-futbol-api/' + imagen;
+  }
+  return imagen; // ya es assets/...
+}
 }

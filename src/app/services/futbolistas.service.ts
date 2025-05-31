@@ -147,8 +147,8 @@ En Italia es un mito que representa la belleza y el dolor del fútbol al mismo t
       pais: 'Países Bajos',
       descripcion: 'Delantero letal y técnico, ícono del AC Milan.',
       biografia: `Van Basten fue un delantero espectacular con una capacidad goleadora sublime.
-Ganó tres Balones de Oro y fue pieza clave del Milan de Sacchi que dominó Europa.
-Con la selección neerlandesa ganó la Eurocopa 1988 con un gol inolvidable en la final.
+      Ganó tres Balones de Oro y fue pieza clave del Milan de Sacchi que dominó Europa.
+      Con la selección neerlandesa ganó la Eurocopa 1988 con un gol inolvidable en la final.
 Su carrera se vio truncada por lesiones, pero dejó una marca imborrable.
 Era potente, técnico y con una lectura del juego digna de los grandes.
 Es considerado uno de los mejores delanteros de todos los tiempos.`,

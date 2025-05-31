@@ -13,12 +13,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let producto of carrito; let i = index">
-          <td><img [src]="producto.imagen" width="80" class="rounded shadow"></td>
-          <td>{{ producto.nombre }}</td>
-          <td class="text-success fw-bold">{{ producto.precio | currency:'EUR' }}</td>
-          <td><button class="btn btn-danger" (click)="eliminarProducto(i)">🗑️</button></td>
-        </tr>
+  <tr *ngFor="let producto of carrito; let i = index">
+  <td>
+    <img [src]="getRutaImagen(producto.imagen)" class="img-thumbnail" [alt]="producto.nombre" style="width: 60px; height: 60px; object-fit: cover;">
+  </td>
+  <td>{{ producto.nombre }}</td>
+  <td class="text-success fw-bold">{{ producto.precio | currency:'EUR' }}</td>
+  <td>
+    <button class="btn btn-danger" (click)="eliminarProducto(i)">🗑️</button>
+  </td>
+</tr>
+
       </tbody>
     </table>
 

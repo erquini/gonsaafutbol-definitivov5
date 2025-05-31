@@ -12,9 +12,10 @@ export class ProductosComponent implements OnInit {
   productos: Producto[] = [];
   productoEditando: Producto | null = null;
 
-  // Para nuevo producto
+  // Modelo para nuevo producto
   nuevoProducto: any = {
     nombre: '',
+    descripcion: '',
     precio: 0,
     stock: 0,
     categoria: ''
@@ -24,12 +25,18 @@ export class ProductosComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.cargarProductos();
+  }
+
+  // Obtener productos
+  cargarProductos() {
     this.http.get<Producto[]>('http://localhost/gonsa-futbol-api/obtener_productos.php')
       .subscribe(data => {
         this.productos = data;
       });
   }
 
+  // Eliminar producto
   eliminar(id: number) {
     if (confirm('¿Eliminar producto permanentemente?')) {
       this.http.delete(`http://localhost/gonsa-futbol-api/eliminar_producto.php?id=${id}`)
@@ -39,49 +46,75 @@ export class ProductosComponent implements OnInit {
     }
   }
 
+  // Editar producto
   editar(p: Producto) {
     this.productoEditando = { ...p };
   }
 
+  // Guardar cambios de edición
   guardarCambios() {
     if (this.productoEditando) {
       this.http.post('http://localhost/gonsa-futbol-api/editar_producto.php', this.productoEditando)
         .subscribe(() => {
-          this.ngOnInit();
+          this.cargarProductos();
           this.productoEditando = null;
         });
     }
   }
 
+  // Cancelar edición
   cancelarEdicion() {
     this.productoEditando = null;
   }
 
+  // Manejar archivo seleccionado
   onFileSelected(event: any) {
     this.imagenSeleccionada = event.target.files[0];
   }
 
-  crearProducto() {
-    const formData = new FormData();
-    formData.append('nombre', this.nuevoProducto.nombre);
-    formData.append('precio', this.nuevoProducto.precio.toString());
-    formData.append('stock', this.nuevoProducto.stock.toString());
-    formData.append('categoria', this.nuevoProducto.categoria);
-    formData.append('imagen', this.imagenSeleccionada);
+  // Crear nuevo producto
+ crearProducto() {
+  const formData = new FormData();
+  formData.append('nombre', this.nuevoProducto.nombre);
+  formData.append('descripcion', this.nuevoProducto.descripcion);
+  formData.append('precio', this.nuevoProducto.precio.toString());
+  formData.append('stock', this.nuevoProducto.stock.toString());
+  formData.append('categoria', this.nuevoProducto.categoria);
+  formData.append('imagen', this.imagenSeleccionada);
 
-    this.http.post<any>('http://localhost/gonsa-futbol-api/crear_producto.php', formData)
-      .subscribe((res) => {
-        alert('✅ Producto creado');
-        this.ngOnInit();
-        this.nuevoProducto = { nombre: '', precio: 0, stock: 0, categoria: '' };
-      });
-  }
-  getRutaImagen(ruta: string): string {
-  if (ruta.startsWith('uploads/')) {
-    return 'http://localhost/gonsa-futbol-api/' + ruta;
-  } else {
-    return ruta; // ya es 'assets/...'
-  }
+  this.http.post<any>('http://localhost/gonsa-futbol-api/crear_producto.php', formData)
+    .subscribe({
+      next: (res) => {
+        console.log('✔ Producto creado:', res);
+
+        if (res.status === 'ok') {
+          alert('✅ Producto agregado correctamente');
+          this.cargarProductos();
+          this.nuevoProducto = {
+            nombre: '',
+            descripcion: '',
+            precio: 0,
+            stock: 0,
+            categoria: ''
+          };
+        } else {
+          alert('⚠️ Error: ' + res.mensaje);
+        }
+      },
+      error: (err) => {
+        console.error('❌ Error HTTP al crear producto:', err);
+        alert('❌ Error al crear producto. Revisa la consola.');
+      }
+    });
 }
 
+
+  // Obtener ruta de imagen
+  getRutaImagen(ruta: string): string {
+    if (ruta.startsWith('uploads/')) {
+      return 'http://localhost/gonsa-futbol-api/' + ruta;
+    } else {
+      return ruta; // ya es 'assets/...'
+    }
+  }
 }
